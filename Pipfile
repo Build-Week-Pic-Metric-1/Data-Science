@@ -6,10 +6,10 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-tensorflow = "*"
 flask = "*"
 requests = "*"
 pillow = "*"
+tensorflow = "==2.0.0"
 
 [requires]
 python_version = "3.7"
