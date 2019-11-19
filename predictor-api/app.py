@@ -1,7 +1,7 @@
 # imports
 from flask import Flask, request
 import json
-from resnet50 import process_img_path, resnet_model
+from .resnet50 import process_img_path, resnet_model
 
 def create_app():
     app = Flask(__name__)
