@@ -1,25 +1,25 @@
 import numpy as np
+import requests
+from PIL import Image
+from io import BytesIO
 
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
 from tensorflow.keras.applications.resnet50 import decode_predictions
 from tensorflow.keras.preprocessing import image
 
-from imageio import imread
-from skimage.transform import resize
-
-url = 'https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg'
 
 
-def process_img_path_url(img_path):
-    ''' Process image url and compresses it to 224 x 224'''
-    img_raw = imread(img_path)
+def process_img_path(url):
+    ''' Processes image url and compresses it to 224 x 224 pixels'''
+    if url.startswith('http://') or url.startswith('https://') or url.startswith('ftp://'):
+        response = requests.get(url)
+        img = Image.open(BytesIO(response.content))
+        img = img.resize((224, 224))
+    else:
+        if not os.path.exists(url):
+            raise Exception('Input image file does not exist')
+        img = image.load_img(url, target_size=(224, 224))
     return img
-
-
-def process_img_path_local(img_path):
-    ''' Processes local image path and compresses it to 224 x 224 pixels'''
-    return image.load_img(img_path, target_size=(224, 224))
-
 
 def resnet_model(img):
     ''' Processes image into an array of vectors
@@ -33,6 +33,3 @@ def resnet_model(img):
     results = decode_predictions(features, top=3)[0]
     preds = {tup[1]: tup[2] for tup in results}
     return preds
-
-
-print(resnet_modelprocess_img_path_local(process_img_path_url(url)))
