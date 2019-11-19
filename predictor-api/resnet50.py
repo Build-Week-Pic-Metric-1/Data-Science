@@ -3,6 +3,8 @@ import numpy as np
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input, decode_predictions
 from tensorflow.keras.preprocessing import image
 
+url = 'https://en.wikipedia.org/wiki/Gandalf#/media/File:Gandalf600ppx.jpg'
+
 def process_img_path(img_path):
   ''' Processes image url and compresses it to 224 x 224 pixels'''
   return image.load_img(img_path, target_size=(224, 224))
@@ -19,3 +21,5 @@ def resnet_model(img):
     results = decode_predictions(features, top=3)[0]
     preds = {tup[1]:tup[2] for tup in results}
     return preds
+
+print(resnet_model(process_img_path(url)))
