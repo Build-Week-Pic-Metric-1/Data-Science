@@ -2,7 +2,7 @@ import requests
 import json
 
 if __name__ == '__main__':
-    url = "https://pic-metric1.herokuapp.com/predictor"  # if you want to test local
+    url = "https://pic-metric1.herokuapp.com/hello"  # if you want to test local
     # url = "my-heroku-app.heroku.com" # if you want to test deployed
 
     # this assumes that the agreed upon json key is `key`
