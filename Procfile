@@ -1,1 +1,1 @@
-web: gunicorn predictor-api:app -t 120
+web: gunicorn predictor-api:app
