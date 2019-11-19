@@ -5,13 +5,14 @@ from tensorflow.keras.applications.resnet50 import decode_predictions
 from tensorflow.keras.preprocessing import image
 
 from imageio import imread
+from skimage.transform import resize
 
 url = 'https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg'
 
 
 def process_img_path_url(img_path):
     ''' Process image url and compresses it to 224 x 224'''
-    img = imread(img_path)
+    img_raw = imread(img_path)
     return img
 
 
@@ -34,4 +35,4 @@ def resnet_model(img):
     return preds
 
 
-print(resnet_model(process_img_path_url(url)))
+print(resnet_modelprocess_img_path_local(process_img_path_url(url)))
