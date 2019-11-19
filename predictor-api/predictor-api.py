@@ -9,7 +9,6 @@ app = Flask(__name__)
 def predictor():
     '''a route that expects an image url and id. returns image classifications, probabilities, and id'''
 
-    
     # get info from backend 
     lines = request.get_json(force=True)
     
@@ -32,6 +31,10 @@ def predictor():
         response=json.dumps(send_back),
         status=200
     )
+
+@app.route('/hello', methods=['POST'])
+def hello():
+    print('hello, JC')
 
 
 if __name__ == '__main__':
