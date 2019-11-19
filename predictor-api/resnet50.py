@@ -6,7 +6,7 @@ from tensorflow.keras.preprocessing import image
 
 from imageio import imread
 
-url = 'https://en.wikipedia.org/wiki/Gandalf#/media/File:Gandalf600ppx.jpg'
+url = 'https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg'
 
 
 def process_img_path_url(img_path):
