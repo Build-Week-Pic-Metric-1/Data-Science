@@ -3,10 +3,8 @@ import requests
 from PIL import Image
 from io import BytesIO
 
-from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
-from tensorflow.keras.applications.resnet50 import decode_predictions
+from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input, decode_predictions
 from tensorflow.keras.preprocessing import image
-
 
 
 def process_img_path(url):
@@ -20,6 +18,7 @@ def process_img_path(url):
             raise Exception('Input image file does not exist')
         img = image.load_img(url, target_size=(224, 224))
     return img
+
 
 def resnet_model(img):
     ''' Processes image into an array of vectors
