@@ -1,11 +1,22 @@
 import numpy as np
+import requests
+from PIL import Image
+from io import BytesIO
 
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input, decode_predictions
 from tensorflow.keras.preprocessing import image
 
-def process_img_path(img_path):
+def process_img_path(url):
   ''' Processes image url and compresses it to 224 x 224 pixels'''
-  return image.load_img(img_path, target_size=(224, 224))
+  if url.startswith('http://') or url.startswith('https://') or url.startswith('ftp://'):
+        response = requests.get(url)
+        img = Image.open(BytesIO(response.content))
+        img = img.resize((224, 224))
+  else:
+        if not os.path.exists(url):
+            raise Exception('Input image file does not exist')
+        img = image.load_img(url, target_size=(224, 224))
+  return img
 
 def resnet_model(img):
     ''' Processes image into an array of vectors
