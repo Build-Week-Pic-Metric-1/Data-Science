@@ -3,7 +3,8 @@ from flask import Flask, request
 import json
 from resnet50 import process_img_path, resnet_model
 
-app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
  
 @app.route('/predictor', methods=['POST'])
 def predictor():
