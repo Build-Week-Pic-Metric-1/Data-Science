@@ -8,8 +8,8 @@ def create_app():
     
     # from tensorflow.keras.applications.resnet50 import ResNet50
     # ResNet50(weights='imagenet')
-    dummy_url = 'https://wordpress.accuweather.com/wp-content/uploads/2018/05/forest-1.jpg'
-    resnet_model(process_img_path(dummy_url))
+    # dummy_url = 'https://wordpress.accuweather.com/wp-content/uploads/2018/05/forest-1.jpg'
+    # resnet_model(process_img_path(dummy_url))
 
     @app.route('/predictor', methods=['POST'])
     def predictor():
@@ -45,7 +45,7 @@ def create_app():
             }
         return app.response_class(
             respose=json.dumps(send_this),
-            status=200)
+            status=200
         )
     
     return app
