@@ -33,3 +33,6 @@ def resnet_model(img):
     results = decode_predictions(features, top=3)[0]
     preds = {tup[1]: tup[2] for tup in results}
     return preds
+
+# url = 'https://wordpress.accuweather.com/wp-content/uploads/2018/05/forest-1.jpg'
+# print(resnet_model(process_img_path(url)))

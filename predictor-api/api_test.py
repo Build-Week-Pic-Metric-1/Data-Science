@@ -6,7 +6,15 @@ if __name__ == '__main__':
     # url = "my-heroku-app.heroku.com" # if you want to test deployed
 
     # this assumes that the agreed upon json key is `key`
-    photo_url = 'https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg'
+    # WORKS
+    # photo_url = 'https://upload.wikimedia.org/wikipedia/en/e/e9/Gandalf600ppx.jpg'
+    # SOMETIMES WORKS / SOMETIMES DOES NOT WORK
+    # photo_url = 'https://miro.medium.com/max/15904/1*eG2MFl0sGRKFmd_USgA_8Q.jpeg'
+    # SOMETIMES WORKS / SOMETIMES DOES NOT WORK
+    # photo_url = 'http://www.sabretravelnetwork.com/images/uploads/hero-developers.jpg' 
+    # WORKS AND DOESN'T WORK
+    # photo_url = 'https://www.computerhope.com/jargon/d/developer.jpg'
+    photo_url = 'https://wordpress.accuweather.com/wp-content/uploads/2018/05/forest-1.jpg'
     # 'key' is used within a route like a dictionary key
     val = {'url': photo_url, 'photo_id': 1234}
     r_success = requests.post(url, data=json.dumps(val))
