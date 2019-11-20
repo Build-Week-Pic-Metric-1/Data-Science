@@ -6,6 +6,11 @@ from .resnet50 import process_img_path, resnet_model
 def create_app():
     app = Flask(__name__)
     
+    # from tensorflow.keras.applications.resnet50 import ResNet50
+    # ResNet50(weights='imagenet')
+    dummy_url = 'https://wordpress.accuweather.com/wp-content/uploads/2018/05/forest-1.jpg'
+    resnet_model(process_img_path(dummy_url))
+
     @app.route('/predictor', methods=['POST'])
     def predictor():
         '''a route that expects an image url and id. returns image classifications, probabilities, and id'''
@@ -33,9 +38,14 @@ def create_app():
 
     @app.route('/hello', methods=['POST'])
     def hello():
-        print('hello, JC')
+        send_this = {
+            'swing': 0.108803526, 
+            'wig': 0.0843652, 
+            'neck_brace': 0.08196747
+            }
+        return app.response_class(
+            respose=json.dumps(send_this),
+            status=200)
+        )
     
     return app
-
-# if __name__ == '__main__':
-#     app.run()
